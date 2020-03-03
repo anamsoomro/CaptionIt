@@ -1,5 +1,42 @@
-<img src= <%= @comic.image_url %> alt="Image not loaded">
+<h1>CAPTION IT!</h1>
 
-<label>Uploaded by: <%= @user.username %> </label>
+
+<img src= <%= @comic.image_url %> alt="Image not loaded" height="200"><br/>
+<label>Total knee slaps: <%= @comic.total_likes %></label>
+
+<label>Uploaded by: <%= @user.username %> </label><br>
+
+<label>Tags: </label>
+<% @topics.each do |topic| %>
+  <a href="/topics/<%= topic.id %>">
+    <%= topic.label %>
+  </a>
+<% end %>
 
 <h4>Captions: </h4>
+
+<% @captions.each do |caption| %>
+  <%= caption.text %> -<%=User.find(caption.user_id).username%> 
+  <%= link_to "#{caption.likes} knee slaps", controller: "captions", action: "like", name: "caption_id", caption_id: caption.id %>
+<% end %>
+
+
+
+
+
+
+
+<br>
+<br>
+
+<button>
+  <a href="/comics/<%= @comic.id %>/edit">
+    <div>Edit Tags</div>
+  </a>
+</button>
+
+
+<%= form_with model: @movie, method: :delete do |f|  %>
+  <%= f.submit "Delete Image" %>
+<% end %>
+
