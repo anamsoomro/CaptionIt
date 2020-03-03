@@ -1,0 +1,10 @@
+<h1>CAPTION IT!</h1>
+
+
+<%= form_with model: @comic do |f| %>
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url %> <br><br>
+  <%= f.label :tags %> <br>
+  <%= f.collection_check_boxes :topic_ids, @topics, :id, :label %><br><br>
+  <%= f.submit  %>
+<% end %>

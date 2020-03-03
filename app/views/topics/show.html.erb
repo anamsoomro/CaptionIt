@@ -1,0 +1,11 @@
+<h1>CAPTION IT!</h1>
+
+<h2> <%= @topic.label %> </h2>
+
+<h4>Comics: </h4>
+
+<% @comics.each do |comic| %>
+  <a href="/comics/<%= comic.id %>">
+    <img src="<%= comic.image_url %>" alt="Image did not load" height="200">
+  </a>
+<% end %>

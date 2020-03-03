@@ -1,0 +1,28 @@
+<h1>CAPTION IT!</h1>
+
+
+<h2>5 Hottest Images: </h2>
+
+<%# @comics.each do |comic| %>
+<% @top_5_comics.each do |comic| %>
+  <a href="/comics/<%= comic.id %>">
+    <img src="<%= comic.image_url %>" alt="Image did not load." height="100">
+  </a>
+<% end %>
+
+<h4>Categories: </h4>
+<% @topics.each do |topic| %>
+  <a href="/topics/<%= topic.id %>">
+    <li><%= topic.label %></li>
+  </a>
+<% end %>
+
+
+<br>
+<br>
+<button>
+  <a href="/comics/new">
+    <div>Add New Image</div>
+  </a>
+</button>
+
