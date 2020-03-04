@@ -17,4 +17,21 @@ class Comic < ApplicationRecord
     top_5 = sorted_comics.slice(0,5)
   end
 
+  def funniest_caption_order
+    self.captions.sort_by{|caption| -caption.likes}
+  end
+
+  def funniest_caption 
+    if !self.captions.empty?
+      funniest_caption_order.first
+    end 
+  end
+
+  def self.sort_by_latest
+    self.all.sort_by {|comic| -comic.created_at}
+  end
+
+  def self.sort_by_funniest
+    self.all.sort_by {|comic| -comic.total_likes}
+  end
 end

@@ -2,6 +2,29 @@
 
     <% @users.each do |user|%>
         <ul>
-            <li><%= user.username %></li>
+            <li>
+              <%= user.username %>
+              [<%= user.likes %> knee slaps]
+            </li>
         </ul>
     <%end%>
+
+<br>
+<br>
+<button>
+  <a href="/topics">
+    <div>Categories</div>
+  </a>
+</button>
+<br>
+<button>
+  <a href="/comics">
+    <div>All Images</div>
+  </a>
+</button>
+<br>
+<button>
+  <a href="/comics/new">
+    <div>Add New Image</div>
+  </a>
+</button>

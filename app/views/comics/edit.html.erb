@@ -6,5 +6,7 @@
   <%# f.text_field :image_url %> <br><br>
   <%= f.label :tags %> <br>
   <%= f.collection_check_boxes :topic_ids, @topics, :id, :label %><br><br>
-  <%= f.submit "Edit Tags" %>
+  <%= f.label "New tag:" %>
+  <%= f.text_field :topic_name %><br><br>
+  <%= f.submit "Update Tags" %>
 <% end %>
