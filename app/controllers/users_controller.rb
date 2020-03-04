@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     skip_before_action :authorized, only: [:new, :create]
 
     def index
-        @users = User.all
+        @users = User.funniest_order
     end
 
     def new
