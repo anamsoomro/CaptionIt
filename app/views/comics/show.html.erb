@@ -16,9 +16,10 @@
 
 <% @comic.funniest_caption_order.each do |caption| %>
   <%= caption.text %> -<%=User.find(caption.user_id).username%> 
-  <button>
-    <%= link_to "#{caption.likes} knee slaps", controller: "captions", action: "like", name: "caption_id", caption_id: caption.id %>
-  </button><br><br>
+    <%#= link_to "#{caption.likes} knee slaps", controller: "captions", action: "like", name: "caption_id", caption_id: caption.id %>
+    <%= form_with url:"/captions/#{caption.id}/like", method: "patch" do |f| %>
+      <%= f.submit "#{caption.likes} knee slaps" %>
+    <% end %> <br>
 <% end %>
 
 <br>

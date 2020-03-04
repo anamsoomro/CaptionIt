@@ -12,10 +12,11 @@ class CaptionsController < ApplicationController
 
   def current_caption 
     # byebug
-    @caption = Caption.find(params[:caption_id])
+    @caption = Caption.find(params[:id])
   end
 
   def caption_params 
-    params.require(:caption).permit(:caption_id, :likes, :text)
+    params.require(:caption).permit(:likes, :text)
   end
+
 end

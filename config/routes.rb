@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :topics
   resources :captions
   resources :comic_topics
@@ -7,5 +8,7 @@ Rails.application.routes.draw do
   root to: "application#home"
 
   # patch "/comics/:id", to: "comics#like", as: "like"
-  get "/captions/:id/like", to: "captions#like"
+  patch "/captions/:id/like", to: "captions#like"
+
+
 end
