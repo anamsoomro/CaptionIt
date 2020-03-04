@@ -7,8 +7,6 @@ Caption.destroy_all
 # suckr = ImageSuckr::GoogleSuckr.new
 
 
-10.times do 
-  #User.create(username: "#{Faker::Color.color_name}#{Faker::Dessert.variety}".delete(" "))
   User.create(username: "AnamS", password: "1")
   User.create(username: "BlakeG", password: "2")
   User.create(username: "PlacidoW", password: "3")
@@ -17,7 +15,7 @@ Caption.destroy_all
   User.create(username: "MitchellA", password: "6")
   User.create(username: "VidhiS", password: "7")
   User.create(username: "StevenN", password: "8")
-end
+
 
 
 Topic.create(label: "satire" )

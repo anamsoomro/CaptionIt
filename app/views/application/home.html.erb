@@ -1,5 +1,14 @@
+
+
+
 <h1>CAPTION IT!</h1>
 
+<% if logged_in? %>
+    <h1>You are Logged In, <%= current_user.username %></h1>
+    <%else%>
+<%= button_to "Login", '/login', method: :get %>
+<%= button_to "Sign Up", '/users/new', method: :get %>
+<%end%>
 
 <h2>5 Hottest Images: </h2>
 
