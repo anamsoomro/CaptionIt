@@ -8,7 +8,15 @@ Caption.destroy_all
 
 
 10.times do 
-  User.create(username: "#{Faker::Color.color_name}#{Faker::Dessert.variety}".delete(" "))
+  #User.create(username: "#{Faker::Color.color_name}#{Faker::Dessert.variety}".delete(" "))
+  User.create(username: "AnamS", password: "1")
+  User.create(username: "BlakeG", password: "2")
+  User.create(username: "PlacidoW", password: "3")
+  User.create(username: "GianM", password: "4")
+  User.create(username: "PaulH", password: "5")
+  User.create(username: "MitchellA", password: "6")
+  User.create(username: "VidhiS", password: "7")
+  User.create(username: "StevenN", password: "8")
 end
 
 
