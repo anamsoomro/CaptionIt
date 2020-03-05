@@ -1,0 +1,35 @@
+<div>
+
+<h1>All Users:</h1>
+
+<% @users.each do |user|%>
+      <%= link_to "#{user.username}", user_path(user) %>
+      [<%= user.likes %> knee slaps] <br><br>
+<%end%>
+
+</div>
+<!-- 
+<br>
+<br>
+<button>
+  <a href="/topics">
+    <div>Categories</div>
+  </a>
+</button>
+<br>
+<button>
+  <a href="/comics">
+    <div>All Images</div>
+  </a> 
+</button>
+<br>
+<button>
+  <a href="/comics/new">
+    <div>Add New Image</div>
+  </a>
+</button>
+<%= form_with url: "/logout", method: "delete" do |f| %>
+  <%= f.submit "logout" %>
+<% end %>
+-->
+
