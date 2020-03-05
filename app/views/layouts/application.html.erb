@@ -8,6 +8,7 @@
     <%= stylesheet_link_tag  'application', media: 'all' %>
   </head>
   <body>
+    <!-- if logged out limit some of these links -->
     <ul>
       <li> <%= link_to "Home", "/" %> </li>
       <li> <%= link_to "Profile", "/users/#{session[:user_id]}" %> </li>

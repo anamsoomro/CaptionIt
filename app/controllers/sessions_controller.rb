@@ -5,27 +5,24 @@ class SessionsController < ApplicationController
     def new
     end
 
-    def welcome
-    end
-
     def create
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
            redirect_to '/'
-        else
-            flash[:notice] = 
-            redirect_to '/login'
+        # else
+        #     flash[:notice] = @user.errors.full_messages
+        #     redirect_to '/'
         end
     end
 
-    def page_requires_login
+    def welcome 
 
     end
 
     def destroy 
       session.delete(:user_id)
-      redirect_to "/login"
+      redirect_to "/"
     end
 
 end
