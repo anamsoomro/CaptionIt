@@ -7,14 +7,15 @@ Caption.destroy_all
 # suckr = ImageSuckr::GoogleSuckr.new
 
 
-  User.create(username: "AnamS", password: "1")
-  User.create(username: "BlakeG", password: "2")
-  User.create(username: "PlacidoW", password: "3")
-  User.create(username: "GianM", password: "4")
-  User.create(username: "PaulH", password: "5")
-  User.create(username: "MitchellA", password: "6")
-  User.create(username: "VidhiS", password: "7")
-  User.create(username: "StevenN", password: "8")
+
+  User.create(username: "AnamS", password: "abc")
+  User.create(username: "BlakeG", password: "abc")
+  User.create(username: "PlacidoW", password: "abc")
+  User.create(username: "GianM", password: "abc")
+  User.create(username: "PaulH", password: "abc")
+  User.create(username: "MitchellA", password: "abc")
+  User.create(username: "VidhiS", password: "abc")
+  User.create(username: "StevenN", password: "abc")
 
 
 
@@ -61,7 +62,6 @@ ComicTopic.create(comic_id: Comic.third.id, topic_id: Topic.third.id)
 ComicTopic.create(comic_id: Comic.third.id, topic_id: Topic.second.id)
 ComicTopic.create(comic_id: Comic.third.id, topic_id: Topic.fourth.id)
 
-ComicTopic.create(comic_id: Comic.second.id, topic_id: Topic.second.id)
 ComicTopic.create(comic_id: Comic.second.id, topic_id: Topic.first.id)
 ComicTopic.create(comic_id: Comic.second.id, topic_id: Topic.fourth.id)
 
@@ -79,6 +79,10 @@ Caption.create(text: Faker::Quote.yoda, user_id: User.fifth.id, comic_id: Comic.
 Caption.create(text: Faker::Quote.yoda, user_id: User.first.id, comic_id: Comic.first.id, likes: 1)
 Caption.create(text: Faker::Quote.yoda, user_id: User.fifth.id, comic_id: Comic.third.id, likes: 9)
 Caption.create(text: Faker::Quote.yoda, user_id: User.second.id, comic_id: Comic.first.id, likes: 1)
+Caption.create(text: Faker::Quote.most_interesting_man_in_the_world, user_id: User.last.id, comic_id: Comic.last.id, likes: 10)
+Caption.create(text: Faker::Quote.most_interesting_man_in_the_world, user_id: User.second.id, comic_id: Comic.last.id, likes: 2)
+Caption.create(text: Faker::Quote.most_interesting_man_in_the_world, user_id: User.last.id, comic_id: Comic.second.id, likes: 1)
+
 
 
 

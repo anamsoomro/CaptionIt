@@ -17,8 +17,13 @@
  body {
   font-family: 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 15px;
-  background: #f2f8ff;
+  background: #f1f1f1;
   font-weight: 300;
+  margin: 0 auto;
+}
+
+body.welcome {
+  
 }
 
 a {
@@ -36,3 +41,58 @@ a {
   padding: 1em 0;
   border-radius: 3px;
 }
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 20%;
+  background-color: #cfcece;
+  position: fixed;
+  height: 100%;
+  overflow: auto;
+}
+
+li a {
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+li a.active {
+  background-color: #cfcece;
+  color: white;
+}
+
+li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+
+div {
+  margin-left:25%;
+  padding: 3px 3px;
+  height:1000px;
+}
+
+li input{
+  display: block;
+  color: #000;
+  padding: 8px 16px;
+  text-decoration: none;
+}
+
+.inline_form {
+  display: inline;
+}
+
+.text_field {
+  width: 300px;
+}
+
+div.gallery img {
+  height=10px;
+}
+ 
+

@@ -1,0 +1,19 @@
+<div>
+
+<h1>CAPTION IT!</h1>
+
+<img src="<%= @caption.comic.image_url%>" alt="Image did not load" height="200"><br><br>
+
+<%= form_with model: @caption do |f| %>
+  <%= f.label :" " %>
+  <%= f.text_field :text, class: "text_field" %>
+  <%= f.hidden_field :likes, :value => @caption.likes %>
+  <%= f.hidden_field :comic_id, :value => @caption.comic_id %>
+  <%= f.submit "Update Caption" %>
+<% end %> <br>
+
+<%= form_with model: @caption, method: :delete do |f| %>
+  <%= f.submit "Delete Caption" %>
+<% end %>
+
+</div>

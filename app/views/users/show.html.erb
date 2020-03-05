@@ -1,0 +1,57 @@
+<div>
+<h1>CAPTION IT!</h1>
+
+<h3><%= @user.username %></h3>
+
+<%= @user.age %> Days Old <br>
+
+<%= @user.likes %> Knee Slaps <br><br>
+
+<% @captions.each do |caption|  %>
+  <a href="/comics/<%= caption.comic_id %>">
+    <img src="<%= Comic.find(caption.comic_id).image_url%>" alt="Image Broke" height="100"><br>
+  </a>
+  <%= caption.text %> -<%= @user.username %>
+  <%= form_with url:"/captions/#{caption.id}/like", method: "patch" do |f| %>
+    <%= f.hidden_field :page, :value => "/users/#{@user.id}" %>
+    <%= f.submit "#{caption.likes} knee slaps" %> 
+  <% end %> <br><br>
+<% end %>
+
+</div>
+<!-- 
+
+<button>
+  <a href="/comics/new">
+    <div>Add New Image</div>
+  </a>
+</button>
+<br>
+
+<button>
+  <a href="/comics">
+    <div>All Images</div>
+  </a>
+</button>
+
+<br>
+<button>
+  <a href="/comics/<%= @random_comic.id %>">
+    <div>Shuffle</div>
+  </a>
+</button>
+<br>
+<button>
+  <a href="/">
+    <div>Home</div>
+  </a>
+</button>
+<%= form_with url: "/logout", method: "delete" do |f| %>
+  <%= f.submit "logout" %>
+<% end %>
+
+-->
+
+
+
+

@@ -6,7 +6,7 @@ class ComicsController < ApplicationController
     @comics = Comic.all 
     # @top_5_comics = Comic.top_5
     @topics = Topic.all 
-    @random_comic = Comic.all.sample
+    @random_comic = Comic.all.sample 
   end
 
   def show 
@@ -68,7 +68,7 @@ class ComicsController < ApplicationController
   end
 
   def like 
-    byebug
+    # byebug
     @caption.increment!(:likes)
     redirect_to comic_path(@caption.comic_id)
   end
