@@ -13,7 +13,7 @@ class ComicsController < ApplicationController
       @comics = Comic.all 
     end 
     @topics = Topic.all 
-    @random_comic = Comic.all.sample
+    @random_comic = Comic.all.sample 
   end
 
   def show 
@@ -74,11 +74,11 @@ class ComicsController < ApplicationController
     redirect_to comics_path
   end
 
-  # def like 
-  #   byebug
-  #   @caption.increment!(:likes)
-  #   redirect_to comic_path(@caption.comic_id)
-  # end
+  def like 
+    # byebug
+    @caption.increment!(:likes)
+    redirect_to comic_path(@caption.comic_id)
+  end
 
   private 
 

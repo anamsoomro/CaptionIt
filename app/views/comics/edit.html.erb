@@ -1,4 +1,7 @@
+<div>
 <h1>CAPTION IT!</h1>
+
+<img src="<%= @comic.image_url %>" alt="Image did not load", height="200">
 
 
 <%= form_with model: @comic do |f| %>
@@ -10,3 +13,9 @@
   <%= f.text_field :topic_name %><br><br>
   <%= f.submit "Update Tags" %>
 <% end %>
+
+<%= form_with model: @movie, method: :delete do |f|  %>
+    <%= f.submit "Delete Image" %>
+  <% end %>
+
+</div>

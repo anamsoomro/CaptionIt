@@ -1,26 +1,46 @@
 
-
+<div>
 
 <h1>CAPTION IT!</h1>
 
 <% if logged_in? %>
-    <h1>You are Logged In, <%= current_user.username %></h1>
+    <!-- <h1>Hey <%= current_user.username %>!</h1> --->
     <%else%>
 <%= button_to "Login", '/login', method: :get %>
 <%= button_to "Sign Up", '/users/new', method: :get %>
 <%end%>
 
-<h2>5 Hottest Images: </h2>
+<h2>3 Funniest Images</h2>
 
-<%# @comics.each do |comic| %>
-<% Comic.top_5.each do |comic| %>
+<% Comic.top_3.each do |comic| %>
   <a href="/comics/<%= comic.id %>">
     <img src="<%= comic.image_url %>" alt="Image did not load." height="100"><br>
   </a>
   <label> <%= comic.funniest_caption.text unless comic.captions.empty? %></label> <br><br>
+  
+<% end %>
+
+<h2>3 Latest Images</h2>
+<% Comic.newest_3.each do |comic| %>
+  <a href="/comics/<%= comic.id %>">
+      <img src="<%= comic.image_url %>" alt="Image did not load" height="100"><br>
+  </a>
+  <label> <%= comic.funniest_caption.text unless comic.captions.empty? %></label> <br><br>
+<% end %>
+
+<h2>3 Funniest Users</h2>
+<% User.top_3.each do |user| %>
+  <a href="/users<%= user.id %>">
+    <%= user.username %> 
+  </a>
+  [<%= user.likes %> knee slaps] <br>
 <% end %>
 
 
+
+</div>
+
+<!-- 
 
 <button>
   <a href="/comics/new">
@@ -41,4 +61,8 @@
     <div>All Images</div>
   </a>
 </button>
+<%= form_with url: "/logout", method: "delete" do |f| %>
+  <%= f.submit "logout" %>
+<% end %>
 
+-->

@@ -1,16 +1,22 @@
+<div>
+
 <h1>CAPTION IT!</h1>
 
 <h4>Categories:</h4>
 
+
 <% @topics.each do |topic| %>
   <a href="/topics/<%= topic.id %>">
-  <li>
     <%= topic.label %> </a>
-    [<%= topic.num_images %> images]  
-  </li>
+    [<%= topic.num_images %> images]  <br>
 <% end %>
 <br>
 
+
+</div>
+
+
+<!-- 
 <button>
   <a href="/comics/new">
     <div>Add New Image</div>
@@ -36,4 +42,10 @@
     <div>Home</div>
   </a>
 </button>
+<%= form_with url: "/logout", method: "delete" do |f| %>
+  <%= f.submit "logout" %>
+<% end %>
+
+-->
+
 

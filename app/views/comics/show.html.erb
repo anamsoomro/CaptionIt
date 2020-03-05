@@ -1,10 +1,12 @@
+<div>
+
 <h1>CAPTION IT!</h1>
 
 
 <img src= <%= @comic.image_url %> alt="Image not loaded" height="200"><br/>
 
 <label>Total knee slaps: <%= @comic.total_likes %></label><br>
-<label>Uploaded by: <%= @user.username %> </label><br>
+<label>Uploaded by: <%= link_to "#{@user.username}", user_path(@user) %> </label><br>
 <label>Tags: </label>
 <% @topics.each do |topic| %>
   <a href="/topics/<%= topic.id %>">
@@ -14,21 +16,44 @@
 
 <h4>Captions: </h4>
 
+
 <% @comic.funniest_caption_order.each do |caption| %>
-  <%= caption.text %> -<%=User.find(caption.user_id).username%> 
-    <%#= link_to "#{caption.likes} knee slaps", controller: "captions", action: "like", name: "caption_id", caption_id: caption.id %>
-    <%= form_with url:"/captions/#{caption.id}/like", method: "patch" do |f| %>
-      <%= f.submit "#{caption.likes} knee slaps" %>
-    <% end %> <br>
+  <%= caption.text %> -<%= link_to "#{User.find(caption.user_id).username}", user_path(caption.user_id)%> <br>
+     <%= form_with url:"/captions/#{caption.id}/like", class: 'inline_form', method: "patch" do |f| %>
+      <%= f.hidden_field :page, :value => "/comics/#{@comic.id}" %>
+      <%= f.submit "#{caption.likes} knee slaps" %> 
+    <% end %> 
+    <% if caption.user_id == session[:user_id]%>
+      <button> <%= link_to "Edit", edit_caption_path(caption) %> </button>
+    <% end %> <br><br>
+<% end %> <br><br>
+
+<%= form_with url:"/captions", method: "post"  do |f| %>
+  <%= f.label :" "%>
+  <%= f.text_field :text, class: 'text_field' %>
+  <%#= f.hidden_field :likes, :value => 0 %>
+  <%= f.hidden_field :comic_id, :value => @comic.id %>
+  <%= f.submit "Add Caption" %>
+<% end %> <br><br>
+
+
+
+<% if @comic.user_id == session[:user_id] %>
+  <button>
+    <a href="/comics/<%= @comic.id %>/edit"> Edit Image</a>
+  </button>
 <% end %>
+
+
+
+</div>
+
+<!-- 
+
 
 <br>
 <br>
-<button>
-  <a href="/comics/<%= @comic.id %>/edit">
-    <div>Edit Tags</div>
-  </a>
-</button>
+
 <br>
 <button>
   <a href="/comics">
@@ -53,6 +78,14 @@
     <div>Home</div>
   </a>
 </button>
-<%= form_with model: @movie, method: :delete do |f|  %>
-  <%= f.submit "Delete Image" %>
+
+<%= form_with url: "/logout", method: "delete" do |f| %>
+  <%= f.submit "logout" %>
 <% end %>
+
+-->
+
+
+
+
+</div>

@@ -1,0 +1,6 @@
+<%= form_with model: @caption do |f| %>
+  <%= f.label :text %>
+  <%= f.text_field :text %>
+  <%= f.hidden_field :likes, :value => 0 %>
+  <%= f.submit "Add Caption" %>
+<% end %>
