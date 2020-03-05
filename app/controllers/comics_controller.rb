@@ -3,8 +3,15 @@ class ComicsController < ApplicationController
   before_action :current_comic, only: [:show, :destroy, :edit, :update, :create_joiners]
 
   def index
-    @comics = Comic.all 
+    # @comics = Comic.all 
     # @top_5_comics = Comic.top_5
+    if sort_method = 1 
+      @comics = Comic.funniest_order
+    elsif sort_method = 2 
+      @comics = the other one 
+    else 
+      @comics = Comic.all 
+    end 
     @topics = Topic.all 
     @random_comic = Comic.all.sample 
   end

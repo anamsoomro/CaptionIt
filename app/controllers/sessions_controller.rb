@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     end
 
     def welcome
-
     end
 
     def create
@@ -15,7 +14,8 @@ class SessionsController < ApplicationController
            session[:user_id] = @user.id
            redirect_to '/'
         else
-           redirect_to '/login'
+            flash[:notice] = 
+            redirect_to '/login'
         end
     end
 

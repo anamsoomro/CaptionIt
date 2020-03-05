@@ -2,7 +2,19 @@ class User < ApplicationRecord
   has_many :comics
   has_many :captions
 
-  validates :username, format: { without: /\s/ }
+  validates :username, uniqueness: true
+  # validates :username, format: { without: /\s/ }, message: 'Put some address please' 
+
+  validate :check_empty_space
+
+def check_empty_space
+  if self.username.match(/\s+/)
+    errors.add(:username, "cannot contain empty spaces, please try again.")
+  end
+end
+
+
+
 
   has_secure_password
 
@@ -14,6 +26,7 @@ class User < ApplicationRecord
     likes
   end
 
+  #user index page
   def self.funniest_order
     self.all.sort_by {|user| -user.likes}
   end

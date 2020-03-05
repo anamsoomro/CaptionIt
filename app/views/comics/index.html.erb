@@ -5,7 +5,10 @@
 
 <h2>All Images: </h2>
 
-<%# @comics.each do |comic| %>
+
+
+
+
 <% @comics.each do |comic| %>
   <a href="/comics/<%= comic.id %>">
     <img src="<%= comic.image_url %>" alt="Image did not load." height="100">
