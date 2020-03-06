@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     def show 
       # byebug
       @captions = @user.captions_ordered
+      @images = @user.images_ordered
       @random_comic = Comic.all.sample
     end
 

@@ -67,12 +67,6 @@ class ComicsController < ApplicationController
     redirect_to comics_path
   end
 
-  def like 
-    # byebug
-    @caption.increment!(:likes)
-    redirect_to comic_path(@caption.comic_id)
-  end
-
   private 
 
   def current_comic

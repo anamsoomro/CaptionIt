@@ -5,22 +5,13 @@
 
 <%= form_with model: @comic do |f| %>
   <%= f.label "Link to Image:" %>
-  <%= f.text_field :image_url %> <br><br>
+  <%= f.text_field :image_url, class: "text_field"%> <br><br>
   <%= f.label "Tags:" %> <br>
-  <%= f.collection_check_boxes :topic_ids, @topics, :id, :label %><br>
+  <%= f.collection_check_boxes :topic_ids, @topics, :id, :label, class: ".checkbox_grid" %><br>
+  <%# f.collection_check_boxes :topic_ids, @topics, :id, :label, class: ".checkbox_grid" %><br>
   <%= f.label "New tag:" %>
   <%= f.text_field :topic_name %><br><br>
   <%= f.submit  %>
 <% end %>
 
 </div>
-
-<!-- 
-
-<button>
-<a href="/">
-<div>Back Home </div>
-</a>
-</button>
-
--->
