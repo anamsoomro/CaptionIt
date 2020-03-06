@@ -23,7 +23,7 @@ class ComicsController < ApplicationController
 
   def create 
     # byebug
-    @comic = Comic.create(image_url: comic_params[:image_url], user_id: User.first.id) #user has to be updated to current user
+    @comic = Comic.create(image_url: comic_params[:image_url], user_id: session[:user_id]) #user has to be updated to current user
     if comic_params[:topic_name] == ""
       if comic_params[:topic_ids].count > 1
         create_joiners
