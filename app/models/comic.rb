@@ -12,35 +12,30 @@ class Comic < ApplicationRecord
     likes 
   end
 
-  def self.top_3
-    sorted_comics = Comic.all.sort_by {|comic| -comic.total_likes}
-    top_5 = sorted_comics.slice(0,3)
+  def self.top(x)
+    Comic.all.sort_by {|comic| -comic.total_likes}.slice(0,x)
   end
 
-  #comic show page
   def funniest_caption_order
     self.captions.sort_by{|caption| -caption.likes}
   end
 
-  #Comic show page
   def funniest_caption 
     if !self.captions.empty?
       funniest_caption_order.first
     end 
   end
 
-  #comic index page
   def self.sort_by_latest
-    self.all.sort_by {|comic| comic.created_at} #CHECK I THINK THIS IS BACKWARDS ORDER
+    self.all.sort_by {|comic| comic.created_at}.reverse
   end
 
-  #comic index page
   def self.sort_by_funniest
     self.all.sort_by {|comic| -comic.total_likes}
   end
 
-  def self.newest_3
+  def self.latest(x)
     sorted = self.sort_by_latest
-    sorted.slice(0, 3)
+    sorted.slice(0, x)
   end
 end

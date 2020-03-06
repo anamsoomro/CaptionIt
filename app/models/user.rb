@@ -23,6 +23,10 @@ class User < ApplicationRecord
     likes
   end
 
+  def show_likes
+    "#{self.likes} Knee Slaps"
+  end
+
   #user index page
   def self.funniest_order
     self.all.sort_by {|user| -user.likes}
@@ -35,17 +39,29 @@ class User < ApplicationRecord
     age_days = (today - born).to_i
   end
 
-  def self.top_3 
-    self.funniest_order.slice(0,3)
+  def self.top(x)
+    self.funniest_order.slice(0,x)
   end
 
   def captions_ordered
     self.captions.sort_by {|caption| -caption.likes}
   end
 
+  def images_ordered
+    self.comics.sort_by {|image| -image.total_likes}
+  end
+
   # active user order 
 
   # top 3 active users 
+
+  def images_uploaded 
+    self.comics.count
+  end
+
+  def captions_written
+    self.captions.count
+  end
 
   # images uploaded
 

@@ -3,65 +3,69 @@
 <h1>CAPTION IT!</h1>
 
 
-<%# if logged_in? %>
-<%#     <%else%> 
-<%# button_to "Login", '/login', method: :get %>
-<%# button_to "Sign Up", '/users/new', method: :get %>
-<%# <%end%> 
-
-
 <h2>3 Funniest Images</h2>
 
-<% Comic.top_3.each do |comic| %>
+<% Comic.top(3).each do |comic| %>
   <a href="/comics/<%= comic.id %>">
     <img src="<%= comic.image_url %>" alt="Image did not load." height="100"><br>
   </a>
-  <label> <%= comic.funniest_caption.text unless comic.captions.empty? %></label> <br><br>
+  <label> <%= comic.funniest_caption.text unless comic.captions.empty? %> 
+    -<%= link_to "#{User.find(comic.user_id).username}", user_path(comic.user_id) %> <br>
+   </label> <br>
   
+  <%= form_with url:"/captions/#{comic.funniest_caption.id}/like", class: 'inline_form', method: "patch" do |f| %>
+      <%= f.hidden_field :page, :value => "/" %>
+      <%= f.submit "#{comic.funniest_caption.likes} Knee Slaps" %>
+  <% end %> <br><br>
+
 <% end %>
 
 <h2>3 Latest Images</h2>
-<% Comic.newest_3.each do |comic| %>
+<% Comic.latest(3).each do |comic| %>
   <a href="/comics/<%= comic.id %>">
       <img src="<%= comic.image_url %>" alt="Image did not load" height="100"><br>
   </a>
-  <label> <%= comic.funniest_caption.text unless comic.captions.empty? %></label> <br><br>
+  <% unless comic.captions.empty? %>
+    <label> <%#= comic.funniest_caption.show_caption %></label> 
+    <%= comic.funniest_caption.text %> -<%= link_to "#{User.find(comic.user_id).username}", user_path(comic.user_id)%> <br>
+
+    <!-- <label> <%#= comic.funniest_caption.show_caption unless comic.captions.empty? %></label> <br> -->
+    <%= form_with url:"/captions/#{comic.funniest_caption.id}/like", class: 'inline_form', method: "patch" do |f| %>
+        <%= f.hidden_field :page, :value => "/" %>
+        <%= f.submit "#{comic.funniest_caption.likes} Knee Slaps" %>
+    <% end %> <br><br>
+  <% end %>
+
+
 <% end %>
 
 <h2>3 Funniest Users</h2>
-<% User.top_3.each do |user| %>
+<% User.top(3).each do |user| %>
   <a href="/users/<%= user.id %>">
     <%= user.username %> 
   </a>
-  [<%= user.likes %> Knee Slaps] <br>
+  [<%= user.show_likes %>] <br>
 <% end %>
 
+
+<h2>3 Funniest Captions</h2>
+
+<% Caption.top(3).each do |caption| %>
+  <a href="/comics/<%= caption.comic_id %>">
+    <img src="<%= Comic.find(caption.comic_id).image_url %>" alt="Image did not load" height="100">
+  </a> <br>
+  <%#= caption.show_caption %> <br>
+  <%= caption.text %> -<%= link_to "#{User.find(caption.user_id).username}", user_path(caption.user_id)%> <br>
+
+  <%= form_with url:"/captions/#{caption.id}/like", class: 'inline_form', method: "patch" do |f| %>
+        <%= f.hidden_field :page, :value => "/" %>
+        <%= f.submit "#{caption.likes} Knee Slaps" %>
+    <% end %> <br><br>
+<% end %>
+<br>
+<br>
+<br>
+<br>
 
 </div>
 
-<!-- 
-
-<button>
-  <a href="/comics/new">
-    <div>Add New Image</div>
-  </a>
-</button>
-<br>
-
-<button>
-  <a href="/topics">
-    <div>All Categories</div>
-  </a>
-</button>
-
-<br>
-<button>
-  <a href="/comics">
-    <div>All Images</div>
-  </a>
-</button>
-<%= form_with url: "/logout", method: "delete" do |f| %>
-  <%= f.submit "logout" %>
-<% end %>
-
--->

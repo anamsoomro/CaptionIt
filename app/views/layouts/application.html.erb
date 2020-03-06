@@ -8,8 +8,9 @@
     <%= stylesheet_link_tag  'application', media: 'all' %>
   </head>
   <body>
-    <!-- if logged out limit some of these links -->
     <ul>
+      <% unless session[:user_id] == nil %>
+      <li>    </li><br>
       <li> <%= link_to "Home", "/" %> </li>
       <li> <%= link_to "Profile", "/users/#{session[:user_id]}" %> </li>
       <li> <%= link_to "Add Image", "/comics/new" %> </li>
@@ -17,10 +18,8 @@
       <li> <%= link_to "Images","/comics" %> </li>
       <li> <%= link_to "Categories", "/topics"%> </li>
       <li> <%= link_to "Users", "/users" %> </li>
-      <li> <%= link_to "Logout", "/logout" %> </li> <!-- this is not restful though -->
-      <li> <%#= form_with url: "/logout", method: "delete" do |f| %> 
-        <%#= f.submit "logout" %>
-      <%# end %> </li>
+      <li> <%= link_to "Logout", "/logout" %> </li>
+      <% end %>
     </ul>
     <%= yield %>
   </body>
