@@ -32,11 +32,13 @@
     <img src="<%= comic.image_url %>" alt="Image Broke" height="100">
   </a> <br>
   <%#= comic.funniest_caption.show_caption.html_safe %>
-  <%= comic.funniest_caption.text %> -<%= link_to "#{User.find(comic.funniest_caption.user_id).username}", user_path(comic.funniest_caption.user_id)%> <br>
-  <%= form_with url:"/captions/#{comic.funniest_caption.id}/like", method: "patch" do |f| %> 
+  <% unless comic.captions.empty? %>
+    <%= comic.funniest_caption.text %> -<%= link_to "#{User.find(comic.funniest_caption.user_id).username}", user_path(comic.funniest_caption.user_id)%> <br>
+    <%= form_with url:"/captions/#{comic.funniest_caption.id}/like", method: "patch" do |f| %> 
     <%= f.hidden_field :page, :value => "/users/#{@user.id}" %> 
     <%= f.submit "#{comic.funniest_caption.likes} Knee Slaps" %> 
-  <% end %> <br><br>
+    <% end %> <br><br>
+  <% end %>
 
 
 <% end %>
