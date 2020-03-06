@@ -10,9 +10,9 @@ class SessionsController < ApplicationController
         if @user && @user.authenticate(params[:password])
            session[:user_id] = @user.id
            redirect_to '/'
-        # else
-        #     flash[:notice] = @user.errors.full_messages
-        #     redirect_to '/'
+        else
+            flash[:errors] = "Wrong username or password"
+            redirect_to '/'
         end
     end
 
