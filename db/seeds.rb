@@ -19,17 +19,22 @@ Caption.destroy_all
 
 
 
-Topic.create(label: "satire" )
-Topic.create(label: "politics" )
-Topic.create(label: "grim" )
-Topic.create(label: "pop culture" )
-Topic.create(label: "animals" )
-Topic.create(label: "technology" )
-Topic.create(label: "memes" )
-Topic.create(label: "dogs" )
-Topic.create(label: "cats" )
-
-
+Topic.create(label: "Satire" )
+Topic.create(label: "Politics" )
+Topic.create(label: "Grim" )
+Topic.create(label: "Pop culture" )
+Topic.create(label: "Animals" )
+Topic.create(label: "Technology" )
+Topic.create(label: "Memes" )
+Topic.create(label: "Dogs" )
+Topic.create(label: "Cats" )
+Topic.create(label: "Aww" )
+Topic.create(label: "Cars" )
+Topic.create(label: "H-town" )
+Topic.create(label: "Sports" )
+Topic.create(label: "Music" )
+Topic.create(label: "Food" )
+Topic.create(label: "Millenials" )
 
 
 # Comic.create(image_url: suckr.get_image_url({"q" => "satire"}), user_id: User.first.id)

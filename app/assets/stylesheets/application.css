@@ -90,5 +90,11 @@ li input{
 div.gallery img {
   height: 10px;
 }
+
+.checkbox-grid {
+  display: block;
+  float: left;
+  width: 25%;
+}
  
 

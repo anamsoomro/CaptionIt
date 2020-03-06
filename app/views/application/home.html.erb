@@ -3,11 +3,11 @@
 <h1>CAPTION IT!</h1>
 
 
-<% if logged_in? %>
-    <%else%>
-<%= button_to "Login", '/login', method: :get %>
-<%= button_to "Sign Up", '/users/new', method: :get %>
-<%end%>
+<%# if logged_in? %>
+<%#     <%else%> 
+<%# button_to "Login", '/login', method: :get %>
+<%# button_to "Sign Up", '/users/new', method: :get %>
+<%# <%end%> 
 
 
 <h2>3 Funniest Images</h2>
@@ -30,10 +30,10 @@
 
 <h2>3 Funniest Users</h2>
 <% User.top_3.each do |user| %>
-  <a href="/users<%= user.id %>">
+  <a href="/users/<%= user.id %>">
     <%= user.username %> 
   </a>
-  [<%= user.likes %> knee slaps] <br>
+  [<%= user.likes %> Knee Slaps] <br>
 <% end %>
 
 

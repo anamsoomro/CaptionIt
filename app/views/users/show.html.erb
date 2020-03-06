@@ -14,7 +14,7 @@
   <%= caption.text %> -<%= @user.username %>
   <%= form_with url:"/captions/#{caption.id}/like", method: "patch" do |f| %>
     <%= f.hidden_field :page, :value => "/users/#{@user.id}" %>
-    <%= f.submit "#{caption.likes} knee slaps" %> 
+    <%= f.submit "#{caption.likes} Knee Slaps" %> 
   <% end %> <br><br>
 <% end %>
 

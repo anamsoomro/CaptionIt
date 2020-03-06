@@ -21,7 +21,7 @@
   <%= caption.text %> -<%= link_to "#{User.find(caption.user_id).username}", user_path(caption.user_id)%> <br>
      <%= form_with url:"/captions/#{caption.id}/like", class: 'inline_form', method: "patch" do |f| %>
       <%= f.hidden_field :page, :value => "/comics/#{@comic.id}" %>
-      <%= f.submit "#{caption.likes} knee slaps" %> 
+      <%= f.submit "#{caption.likes} Knee Slaps" %> 
     <% end %> 
     <% if caption.user_id == session[:user_id]%>
       <button> <%= link_to "Edit", edit_caption_path(caption) %> </button>

@@ -29,7 +29,7 @@ class ComicsController < ApplicationController
         create_joiners
       end
     else 
-      new_topic = Topic.create(label: comic_params[:topic_name])
+      new_topic = Topic.create(label: comic_params[:topic_name].capitalize)
       ComicTopic.create(comic_id: @comic.id, topic_id: new_topic.id)
       if comic_params[:topic_ids].count > 1
         create_joiners
@@ -50,7 +50,7 @@ class ComicsController < ApplicationController
         create_joiners
       end
     else 
-      new_topic = Topic.create(label: comic_params[:topic_name])
+      new_topic = Topic.create(label: comic_params[:topic_name].capitalize)
       ComicTopic.create(comic_id: @comic.id, topic_id: new_topic.id)
       if comic_params[:topic_ids].count > 1
         create_joiners
