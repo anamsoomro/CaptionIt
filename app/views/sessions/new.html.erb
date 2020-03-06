@@ -4,21 +4,23 @@
 
 <h1>CAPTION IT!</h1>
 
-<h2>Welcome! Come Play!</h2>
+<h4 class="home">You think you're funny?<h4> 
+<h4 class="home">Let the people judge.</h4> <br><br><br>
 
 
-<h1>Login</h1>
+<!--<h1>Login</h1>-->
 
  <p style="color:red"> <b> <%= flash[:errors]  %> </b> </p>
 
-  <%= form_tag '/login' do %>
+<%= form_tag '/login' do %>
   <%= label_tag :username%>
   <%= text_field_tag :username %>
   <%= label_tag :password%>
   <%= password_field_tag :password%>
   <%= submit_tag "Login"%>
 <%end%> <br>
-  <%= button_to "Sign Up", "/users/new", method: :get%>
-<br>
+<br><br>
+<h4 class="home">First time here?</h4>
+<%= button_to "Sign Up", "/users/new", method: :get %>
 
 </div>

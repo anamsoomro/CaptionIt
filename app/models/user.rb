@@ -5,7 +5,6 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :username, uniqueness: true
-  # validates :username, format: { without: /\s/ }, message: 'Put some address please' 
 
   validate :check_empty_space
 
@@ -27,7 +26,6 @@ class User < ApplicationRecord
     "#{self.likes} Knee Slaps"
   end
 
-  #user index page
   def self.funniest_order
     self.all.sort_by {|user| -user.likes}
   end
@@ -51,10 +49,6 @@ class User < ApplicationRecord
     self.comics.sort_by {|image| -image.total_likes}
   end
 
-  # active user order 
-
-  # top 3 active users 
-
   def images_uploaded 
     self.comics.count
   end
@@ -62,11 +56,5 @@ class User < ApplicationRecord
   def captions_written
     self.captions.count
   end
-
-  # images uploaded
-
-  # captions_uploaded
-
-
 
 end
